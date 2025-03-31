@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Quora Posts</h1>
+    </header>
+    <div class="posts-container">
+        <% let userPost = posts.post; %>
+        <% for(let post of userPost) { %>
+        <div class="individual-post-container">
+            <div class="main-content">
+                <h3 class="username"> <%= post.user %> </h3>
+                <div class="content-container">
+                    <p> <%= post.content %></p>
+                </div>
+            </div>
+            <button>Delete Post</button>
+        </div>
+        <% } %>
+    </div>
+</body>
+</html>

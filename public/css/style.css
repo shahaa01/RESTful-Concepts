@@ -1,0 +1,77 @@
+body {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: #a62100;
+}
+
+.posts-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    height: 70%;
+    width: 90%;
+    background-color: antiquewhite;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.individual-post-container {
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+    width: 30%;
+    max-width: 300px;
+}
+
+.main-content {
+    height: 90%;
+    min-height: 200px;
+    max-width: 300px;
+    border: 1px solid black;
+    padding: 15px;
+    background-color: #4d1305;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px rgb(0, 0, 0, 0.5);
+    margin: 10px 0;
+}
+
+.main-content:hover {
+    box-shadow: 5px 5px 15px rgb(255, 52, 52);
+    cursor: pointer;
+}
+
+.main-content:active {
+    box-shadow: inset 5px 5px 5px rgb(0, 0, 0, 0.5);
+}
+
+.main-content h3 {
+    text-align: center;
+}
+
+button {
+    padding: 15px;
+    background-color: #000157;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px rgb(0, 0, 0, 0.5);
+}
+
+button:active {
+    box-shadow: inset 5px 5px 5px rgb(0, 0, 0, 0.5);
+}
+
+button:hover {
+    box-shadow: 5px 5px 15px rgb(255, 52, 52);
+    cursor: pointer;
+}
