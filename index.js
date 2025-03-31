@@ -26,10 +26,17 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 //lets set it in a way that it can parse json data - uses middleware - express.josn();
+//to also parse form data - for post request to parse data in the body
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 //lets set the static files path
 app.use(express.static(path.join(__dirname, 'public')));
+
+//lets create paths
+app.get('/', (req, res) => {
+    res.send('Server successfully loaded!');
+})
 
 
 app.listen(PORT, () => {
