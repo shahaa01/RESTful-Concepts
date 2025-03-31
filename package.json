@@ -1,0 +1,24 @@
+{
+  "name": "rest",
+  "version": "1.0.0",
+  "description": "This repository documents my journey of learning and applying RESTful concepts. I explored and implemented key REST principles, including:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shahaa01/RESTful-Concepts.git"
+  },
+  "keywords": [],
+  "author": "Aaditya Shah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shahaa01/RESTful-Concepts/issues"
+  },
+  "homepage": "https://github.com/shahaa01/RESTful-Concepts#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}
