@@ -38,7 +38,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //simulating database - which stores the posts
-let arr = [
+let posts = [
     {
         user: "Aaditya",
         content: "I love coding!"
@@ -64,7 +64,6 @@ app.get('/', (req, res) => {
 
 //path to get the data of all the posts - an array of the post is simulated as database which we will be exploring later
 app.get('/posts', (req, res) => {
-    let posts = {post: arr};
     res.render('index', {posts});
 })
 

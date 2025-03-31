@@ -11,8 +11,7 @@
         <h1>Quora Posts</h1>
     </header>
     <div class="posts-container">
-        <% let userPost = posts.post; %>
-        <% for(let post of userPost) { %>
+        <% for(let post of posts) { %>
         <div class="individual-post-container">
             <div class="main-content">
                 <h3 class="username"> <%= post.user %> </h3>
