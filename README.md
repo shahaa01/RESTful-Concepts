@@ -14,4 +14,4 @@ This repository documents my journey of learning and applying RESTful concepts. 
 
 🔑 UUID Generation: Worked with unique ID creation for resource identification.
 
-💡 This repository serves as a reference point for others looking to understand and build RESTful APIs, while also showcasing my hands-on experience with backend development concepts by.
+💡 This repository serves as a reference point for others looking to understand and build RESTful APIs, while also showcasing my hands-on experience with backend development concepts by developing.
