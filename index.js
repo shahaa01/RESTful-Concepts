@@ -67,6 +67,18 @@ app.get('/posts', (req, res) => {
     res.render('index', {posts});
 })
 
+//path to create a new post - user will fill up a form
+app.get('/posts/new', (req, res) => {
+    res.render('newPost.ejs');
+    console.log(res.body);
+})
+
+app.post('/posts', (req, res) => {
+    console.log(req.body);
+    posts.push(req.body);
+    console.log('Successfully added post.');
+    res.render('index.ejs', {posts})
+})
 
 app.listen(PORT, () => {
     console.log(`Listening to port ${PORT}`);

@@ -1,0 +1,64 @@
+body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: #a62100;
+}
+
+.form, form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+input, textarea {
+    background-color: rgb(136, 24, 42, 0.3);
+    height: 30px;
+    width: 150px;
+    border-radius: 20px;
+    text-align: center;
+    
+}
+
+textarea {
+    height: 100px;
+    width: 200px;
+}
+
+input::placeholder {
+    color: black;
+    text-align: center;
+}
+
+textarea::placeholder {
+    color: black;
+}
+ 
+button {
+    padding: 15px;
+    background-color: #000157;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px rgb(0, 0, 0, 0.5);
+}
+
+button:active {
+    box-shadow: inset 5px 5px 5px rgb(0, 0, 0, 0.5);
+}
+
+button:hover {
+    box-shadow: 5px 5px 15px rgb(255, 52, 52);
+    cursor: pointer;
+}
+
+
