@@ -40,18 +40,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 //simulating database - which stores the posts
 let posts = [
     {
+        id: '1a',
         user: "Aaditya",
         content: "I love coding!"
     },
     {
+        id: '2b',
         user: "Swechha",
         content: "I love web development!"
     },
     {
+        id: '3c',
         user: "Sus",
         content: "I love working hard!"
     },
     {
+        id : '4d',
         user: "Suraj",
         content: "I hate coding!"
     }
@@ -67,6 +71,15 @@ app.get('/posts', (req, res) => {
     res.render('index', {posts});
 })
 
+
+
+app.get('/posts/:id', (req, res) => {
+    let {id} = req.params;
+    let idPost = posts.find((post) => id === post.id);
+    res.render('index', {idPost});
+    res.send('req working');
+});
+
 //path to create a new post - user will fill up a form
 app.get('/posts/new', (req, res) => {
     res.render('newPost.ejs');
@@ -77,9 +90,14 @@ app.post('/posts', (req, res) => {
     console.log(req.body);
     posts.push(req.body);
     console.log('Successfully added post.');
-    res.render('index.ejs', {posts})
+    res.redirect('/posts');
 })
 
 app.listen(PORT, () => {
     console.log(`Listening to port ${PORT}`);
 });
+
+//so how can we connect these different routes/pages
+//for example - when a new post is submitted - it should directly go to the posts page
+//to do that we can use redirect function of RESPONSE 
+//res.redirect(URL);
