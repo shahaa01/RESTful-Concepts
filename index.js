@@ -75,9 +75,11 @@ app.get('/posts', (req, res) => {
 
 app.get('/posts/:id', (req, res) => {
     let {id} = req.params;
-    let idPost = posts.find((post) => id === post.id);
-    res.render('index', {idPost});
-    res.send('req working');
+    let idPost = posts.find(post => id === post.id);
+    if(!idPost) {
+        res.send('Incorrect id - no post available for this id.')
+    }
+    res.render('individualpost', {idPost});
 });
 
 //path to create a new post - user will fill up a form

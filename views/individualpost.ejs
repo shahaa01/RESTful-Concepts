@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h3>Here is your post [<%= idPost.id %>] in detail</h3>
+    <div class="individual-post-container">
+        <div class="main-content">
+            <h3 class="username"> <%= idPost.user %> </h3>
+            <div class="content-container">
+                <p> <%= idPost.content %></p>
+            </div>
+        </div>
+        <button class="delete">Delete Post</button>
+    </div>
+</body>
+</html>
