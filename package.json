@@ -19,6 +19,7 @@
   "homepage": "https://github.com/shahaa01/RESTful-Concepts#readme",
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "uuid": "^11.1.0"
   }
 }

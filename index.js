@@ -20,8 +20,8 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const { v4: uuidv4 } = require('uuid'); //uuidv4() is a function which will give random unique string IDs
 const PORT = 8080;
-
 
 //lets set view engine to ejs 
 app.set('view engine', 'ejs');
@@ -66,31 +66,71 @@ app.get('/', (req, res) => {
     res.send('Server successfully loaded!');
 });
 
+/**
+ * Exact VS Dynamic Routes
+ * Exact route - which does not contain any path parameters (/path:id -> here id is path parameter) -> /posts is exact route
+ * Dynamic route - which does contain path parameters (/path:id is dynamic routes)
+ */
+
 //path to get the data of all the posts - an array of the post is simulated as database which we will be exploring later
 app.get('/posts', (req, res) => {
     res.render('index', {posts});
 })
 
+/**
+ * This code below will cause an error when you send request to posts/new because When you make a GET request to '/posts/new', 
+ * Express will see if it matches the first route ('/posts')? No. Next route is '/posts/:id' — yes, because :id can be 'new'. So 
+ * Express will use that route instead of the '/posts/new' route. That’s exactly why you see the "Incorrect id - no post available for this id." message.
+ */
 
+/**
+ * Such conflict only occurs for dynamic routes not for exact routes
+ */
+
+// app.get('/posts/:id', (req, res) => {
+//     let {id} = req.params;
+//     let idPost = posts.find(post => id === post.id);
+//     if(!idPost) {
+//         res.send('Incorrect id - no post available for this id.')
+//     }
+//     res.render('individualpost', {idPost});
+// });
+
+// app.get('/posts/new', (req, res) => {
+//     res.render('newPost.ejs');
+//     console.log(res.body);
+// })
+
+/**
+ * Trick to avoid this is to create the more specific routes first - here posts/new is more specific than posts/:id since id can be anything - so always
+ * create the specific routes first - this will avoid the error which was caused before
+ */
+
+//path to create a new post - user will fill up a form
+app.get('/posts/new', (req, res) => {
+    res.render('newPost.ejs');
+})
 
 app.get('/posts/:id', (req, res) => {
     let {id} = req.params;
-    let idPost = posts.find(post => id === post.id);
+    let idPost = posts.find(post => id === post.id); //url parameter is always a string (id in this case is a string so make sure post.id is string for every post)
+    console.log(idPost);
     if(!idPost) {
         res.send('Incorrect id - no post available for this id.')
     }
     res.render('individualpost', {idPost});
 });
 
-//path to create a new post - user will fill up a form
-app.get('/posts/new', (req, res) => {
-    res.render('newPost.ejs');
-    console.log(res.body);
-})
-
+//this is the api that is called when clicked submit button on the form of new post
 app.post('/posts', (req, res) => {
-    console.log(req.body);
-    posts.push(req.body);
+    let postInfo = req.body;
+    //but this method of creating IDs for new posts is very inefficient and may cause erros 
+    //we can use UUID - Universally Unique Identifier package which generates unique string IDs
+    //lets require this package - in the first few lines of code
+    //postInfo.id = String(Math.floor(Math.random()*6)); the url parameter is always a string so better convert the id into a string 
+    postInfo.id = uuidv4(); //this will give a random string id which which always be unique
+    console.log(postInfo);
+    posts.push(postInfo);
     console.log('Successfully added post.');
     res.redirect('/posts');
 })
