@@ -143,3 +143,14 @@ app.listen(PORT, () => {
 //for example - when a new post is submitted - it should directly go to the posts page
 //to do that we can use redirect function of RESPONSE 
 //res.redirect(URL);
+
+
+//Now lets learn implement PATCH - used for partially updating existing data in server
+ //If you chose to only update content of the post then PATCH is used to only update that particular field of the post
+
+ //Update route
+ app.patch('/post/:id', (req, res) => {
+    let {id} = req.params;
+    console.log(id);
+    res.send('Patch request sent.')
+ })
