@@ -76,3 +76,11 @@ button:hover {
     box-shadow: 5px 5px 15px rgb(255, 52, 52);
     cursor: pointer;
 }
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}

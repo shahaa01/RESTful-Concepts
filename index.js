@@ -21,7 +21,9 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const { v4: uuidv4 } = require('uuid'); //uuidv4() is a function which will give random unique string IDs
+const methodOverride = require('method-override');
 const PORT = 8080;
+
 
 //lets set view engine to ejs 
 app.set('view engine', 'ejs');
@@ -33,6 +35,9 @@ app.set('views', path.join(__dirname, 'views'));
 //to also parse form data - for post request to parse data in the body
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+//for other http requests: put, patch, delete
+app.use(methodOverride('_method'));
 
 //lets set the static files path
 app.use(express.static(path.join(__dirname, 'public')));
@@ -148,9 +153,31 @@ app.listen(PORT, () => {
 //Now lets learn implement PATCH - used for partially updating existing data in server
  //If you chose to only update content of the post then PATCH is used to only update that particular field of the post
 
- //Update route
- app.patch('/post/:id', (req, res) => {
+ //Update route - when clicked on edit this api is called;
+ app.get('/posts/edit/:id', (req, res) => {
+    console.log('In edit route');
+    let {id} = req.params;
+    let idPost = posts.find(post => id === post.id); 
+    //url parameter is always a string (id in this case is a string so 
+    // make sure post.id is string for every post)
+    console.log(idPost);
+    if(!idPost) {
+        res.send('Incorrect id - no post available for this id.');
+    }
+    res.render('edit', {idPost});
+ });
+
+ app.patch('/posts/:id', (req, res) => {
     let {id} = req.params;
     console.log(id);
-    res.send('Patch request sent.')
+    let findPost = posts.find(post => id === post.id);
+    console.log(findPost);
+    if(findPost) {
+        let postInfo = res.body;
+        console.log(postInfo);
+        findPost.content = postInfo.content;
+        res.redirect('/post'); //for redirect you need to specify the route you wanna redirect to 
+    } else {
+        res.status(400).send(`Could not find post of id:${id}, please recheck it once.`);
+    }
  })
