@@ -20,7 +20,9 @@
                 </div>
             </div>
             <div class="buttons">
-                <button class="delete">Delete Post</button>
+                <form action="/posts/<%= post.id %>?_method=DELETE" method="post">
+                    <button class="delete" type="submit">Delete Post</button>
+                </form>
                 <a href= <%= `http://localhost:8080/posts/${post.id}` %> > <button class="details">See in detail</button> </a>
                 <a href= <%= `http://localhost:8080/posts/edit/${post.id}` %> > <button class="edit">Edit</button></a>
             </div>

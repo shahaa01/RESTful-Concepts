@@ -181,3 +181,12 @@ app.listen(PORT, () => {
         res.status(400).send(`Could not find post of id:${id}, please recheck it once.`);
     }
  })
+
+ //delete route
+ app.delete('/posts/:id', (req, res) => {
+    console.log('Inside delete route');
+    let {id} = req.params;
+    posts = posts.filter(post => post.id !== id); //filter returns a new array for all the elements which satisfied the condition to be true
+    console.log('Post deleted successfully');
+    res.redirect('/posts');
+ })

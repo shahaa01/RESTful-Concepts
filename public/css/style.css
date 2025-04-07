@@ -6,7 +6,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: aliceblue;
+    background-color: black;
     box-sizing: border-box;
 }
 
@@ -21,7 +21,8 @@ h1 {
     flex-direction: row;
     gap: 15px;
     width: 90%;
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
+    background-color: grey;
     padding: 20px;
     flex-wrap: wrap;
 }
