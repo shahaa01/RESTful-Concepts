@@ -15,7 +15,12 @@
                 <p> <%= idPost.content %></p>
             </div>
         </div>
-        <button class="delete">Delete Post</button>
+        <div class="buttons">
+            <form action="/posts/<%= idPost.id %>?_method=DELETE" method="post">
+                <button class="delete">Delete Post</button>
+            </form>
+            <a href="http://localhost:8080/posts/edit/<%= idPost.id %>"><button class="edit">Edit</button></a>
+        </div>
     </div>
 </body>
 </html>

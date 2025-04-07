@@ -25,6 +25,7 @@ h1 {
     background-color: grey;
     padding: 20px;
     flex-wrap: wrap;
+    border-radius: 20px;
 }
 
 .individual-post-container {

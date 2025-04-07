@@ -189,4 +189,4 @@ app.listen(PORT, () => {
     posts = posts.filter(post => post.id !== id); //filter returns a new array for all the elements which satisfied the condition to be true
     console.log('Post deleted successfully');
     res.redirect('/posts');
- })
+ });
