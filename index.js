@@ -173,10 +173,10 @@ app.listen(PORT, () => {
     let findPost = posts.find(post => id === post.id);
     console.log(findPost);
     if(findPost) {
-        let postInfo = res.body;
+        let postInfo = req.body;
         console.log(postInfo);
         findPost.content = postInfo.content;
-        res.redirect('/post'); //for redirect you need to specify the route you wanna redirect to 
+        res.redirect('/posts'); //for redirect you need to specify the route you wanna redirect to 
     } else {
         res.status(400).send(`Could not find post of id:${id}, please recheck it once.`);
     }
